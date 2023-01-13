@@ -1,0 +1,9 @@
+.error{
+    color:white !important;
+    font-weight: bolder !important;
+    background-color: orangered !important;
+}
+
+.error:hover{
+    background-color: red !important;
+}

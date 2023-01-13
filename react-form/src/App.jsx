@@ -3,7 +3,6 @@ import { useState } from "react";
 import { questions } from "./Questions";
 import { Container,Row, Col, Card, Button , Form} from "react-bootstrap";
 import MultiStepProgressBar from "./components/MultiStepProgressBar";
-import { FormItem } from "./components/FormItem";
 import { MultiStepForm } from "./components/MultiStepForm";
 import { string, object, date} from "yup";
 
@@ -36,6 +35,7 @@ const usernameAndPassword = object().shape({
         POSTALCODEREGEX,
         "Postal code must only be comprised of 6 digits only"
       ),
+    street:string().required("Please enter your street Address"),
     state: string().required("Please select your state."),
     email: string().email(),
     website: string().url(),
@@ -68,11 +68,21 @@ function App(){
               })
               .catch((err)=>{
                 setValidated(false);
-                setErrorMessage(err.errors.join("\r\n"));
-              })
+                setErrorMessage(err.errors);
+              });   
+              break;
           case 2:
-            goToNextPage();
-              break
+            others.validate(pagesAnswers[index],{abortEarly:false})
+            .then((responseData)=>{
+                console.log(
+                    responseData
+                );
+                goToNextPage();
+            }).catch((err)=>{
+                setValidated(false);
+                setErrorMessage(err.errors);
+            });
+            break;
           default:
               console.log("No more validation required");
               goToNextPage();
@@ -126,7 +136,9 @@ function App(){
 
             <Row className="m-5">
                 <Col className="align-self-center">
-                    {!validated && ( <div className="alert alert-danger" role="alert">{errorMessage}</div>)}
+                    {!validated && ( <div className="alert alert-danger" role="alert"><ul>{errorMessage.map((error,index)=>{
+                        return <li key={index}>{error}</li>
+                    })}</ul></div>)}
                 </Col>
             </Row>
     
@@ -154,7 +166,7 @@ function App(){
                     </Card.Footer>
                   ) : (
                     <Card.Footer className="d-flex justify-content-between">
-                      <Button onClick={prevButton} disabled={index == 1}>
+                      <Button onClick={prevButton} disabled={index === 1}>
                         Previous
                       </Button>
                       <Button type="submit">

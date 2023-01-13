@@ -7,6 +7,7 @@ export const FormItem = ({item, onChange, answer}) =>{
                 <Form.Label>{item.label}</Form.Label>
                 <Form.Control 
                     type="text"
+                    autoFocus={(["street","username"].includes(item.value)) }
                     id={item.label}
                     onChange={(e)=>onChange(e.target.value,item.value)}
                     value={answer || ""} />

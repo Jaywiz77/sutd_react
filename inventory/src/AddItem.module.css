@@ -1,9 +1,14 @@
-.error{
-    color:white !important;
+/*
+    ? Add .module to make it exclusive for the component
+    ? i.e. AddItem.module.css applies to AddItem only
+*/
+
+.error {
+    color: white !important;
     font-weight: bolder !important;
-    background-color: orangered !important;
+    background-color: rgba(255, 0, 0, 0.7) !important;
 }
 
-.error:hover{
+.error:hover {
     background-color: red !important;
 }

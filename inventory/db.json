@@ -13,13 +13,6 @@
       "type": "carbs",
       "brand": "fairprice",
       "id": 2
-    },
-    {
-      "name": "Kale",
-      "price": "3",
-      "type": "veges",
-      "brand": "shengshiong",
-      "id": 3
     }
   ]
 }

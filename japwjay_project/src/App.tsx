@@ -9,6 +9,7 @@ import '@picocss/pico/css/pico.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Menu from './components/Menu'
 import Leaderboard from './components/Leaderboard'
+import WordPracticeSelection from './components/WordPracticeSelection';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="wordPractice" element={<HiraganaPractice />} />
         <Route path="menu" element={<Menu />} />
         <Route path="leaderboard" element={<Leaderboard/>}/>
+        <Route path="wordPracticeSelection" element={<WordPracticeSelection/>}/>
       </Routes>
     </BrowserRouter>
   )

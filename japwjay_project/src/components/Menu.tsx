@@ -32,7 +32,7 @@ const Menu  = ():ReactElement => {
                 navigate("../characterPractice" , {state:{type:selected.type}});
                 break;
             case CONSTANTS.WORD_STRING:
-                navigate("../wordPractice");
+                navigate("../wordPracticeSelection");
                 break;
             case CONSTANTS.LEADERBOARD_STRING:
                 navigate("../leaderboard");
